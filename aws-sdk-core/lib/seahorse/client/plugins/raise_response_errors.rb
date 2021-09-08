@@ -12,7 +12,7 @@ module Seahorse
         class Handler < Client::Handler
           def call(context)
             response = @handler.call(context)
-            raise response.error if response.error
+            raise StandardError.new(response.inspect) if response.error
             response
           end
         end
